@@ -42,6 +42,7 @@ if(isset($_POST['submit']))
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
       <link rel="stylesheet" href="css/login.css">
+      <link rel="shortcut icon" href="images/logo.png">
 
   
 </head>

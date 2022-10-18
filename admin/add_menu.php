@@ -117,6 +117,10 @@ if(isset($_POST['submit']))
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/logo.png">
+
+    <?php include("links_modal.php"); ?>
 </head>
 
 <body class="fix-header">
@@ -206,8 +210,10 @@ if(isset($_POST['submit']))
                         </li>
 						 <!-- <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li> -->
                          <li> <a href="reservation.php"><i class="fa fa-table" aria-hidden="true"></i><span>Reservation</span></a></li>
+                         <li> <a id="modal-btn"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reports</span></a></li>
+                            <?php include("reports_modals.php"); ?>
                          <li> <a href="table.php"><i class="fa fa-table" aria-hidden="true"></i><span>Table</span></a></li>
-                         <li> <a href="email/backupCloud.php"><i class="fa fa-database" aria-hidden="true"></i><span>Back-up Database</span></a></li>
+                         <li> <a href="backup/backupCloud.php"><i class="fa fa-database" aria-hidden="true"></i><span>Back-up Database</span></a></li>
                          
                     </ul>
                 </nav>
