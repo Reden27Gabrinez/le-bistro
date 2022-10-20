@@ -9,50 +9,32 @@ include("../connection/connect.php");
 
 if(isset($_POST['submit'] ))
 {
-    //##########################################################################
-            // ITEXMO SEND SMS API - PHP - CURL-LESS METHOD
-            // Visit www.itexmo.com/developers.php for more info about this API
-            //##########################################################################
-            function itexmo($number,$message,$apicode,$passwd){
-                $url = 'https://www.itexmo.com/php_api/api.php';
-                $itexmo = array('1' => $number, '2' => $message, '3' => $apicode, 'passwd' => $passwd);
-                $param = array(
-                    'http' => array(
-                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                        'method'  => 'POST',
-                        'content' => http_build_query($itexmo),
-                    ),
-                );
-                $context  = stream_context_create($param);
-                return file_get_contents($url, false, $context);
-            }
-            //##########################################################################
+
 
         $name       = $_POST['name'];
         $book       = $_POST['book_date'];
         $status     = $_POST['stats'];
 
-        $ApiCode     = "TR-GREGF589639_YNWMP";
-        $ApiPassword = "%9@y]v9d%%";
-        $text        = "NAME".":".$name."\r\n".
-                       "DATE".":".$book."\r\n".
-                    //    "When".":".$when."\r\n".
-                    //    "Incident".":".$incident."\r\n".
-                       "STATS".":".$status."\r\n"."\r\n";
+        //////////////////////
+        require "vendor/autoload.php";
 
-        $result = itexmo("09632357966",$text,$ApiCode,$ApiPassword);
-        if ($result == ""){
-        echo "iTexMo: No response from server!!!
-        Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
-        Please CONTACT US for help. ";	
-        }else if ($result == 0){
-        echo "Message Sent!";
-        }
-        else{	
-        echo "Error Num ". $result . " was encountered!";
-        }
+        $client = new GuzzleHttp\Client(); 
 
-	
+        $response = $client->request("POST", "https://api.sms.fortres.net/v1/messages", [
+            "headers" => [
+                "Content-type" => "application/json"
+            ],
+            "auth" => ["client_id", "client_secret"],
+            "json" => [
+                "recipient" => "09123456789",
+                "message" => "Sample text message"
+            ]
+        ]);
+
+        if ($response->getStatusCode() == 200) {
+            echo $response->getBody();
+        }
+	////////////////////////////////
 	$mql = "UPDATE book SET Status='$_POST[stats]' WHERE id='$_GET[user_upd]' ";
 	mysqli_query($db, $mql);
 			$success = 	'<div class="alert alert-success alert-dismissible fade show">
