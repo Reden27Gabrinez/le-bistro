@@ -3,7 +3,7 @@
 //main connection file for both admin & front end
 $servername = "localhost"; //server
 $username = "root"; //username
-$password = ""; //password
+$password = "Reden27Gabrinez"; //password
 $dbname = "onlinefoodphp";  //database
 
 // Create connection

@@ -15,7 +15,9 @@ if(isset($_POST['submit'] ))
         $book       = $_POST['book_date'];
         $status     = $_POST['stats'];
 
-        //////////////////////
+
+        ////////////////////// 
+        //////fortres
         require "vendor/autoload.php";
 
         $client = new GuzzleHttp\Client(); 
@@ -24,9 +26,9 @@ if(isset($_POST['submit'] ))
             "headers" => [
                 "Content-type" => "application/json"
             ],
-            "auth" => ["client_id", "client_secret"],
+            "auth" => ["d27a92ea-d31c-46ed-8759-44592acad895", "5MD0KUAK3ANmeyYyu4gg0KeoOIuYsC9l3NDY77Mk"],
             "json" => [
-                "recipient" => "09123456789",
+                "recipient" => "09632357966",
                 "message" => "Sample text message"
             ]
         ]);
